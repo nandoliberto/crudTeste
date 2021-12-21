@@ -17,8 +17,6 @@ services:
           - desafio-network
         ports:
           - 8080:80
-        volumes:
-          - ./src:/var/www/html
         
     db:
         image: mariadb
