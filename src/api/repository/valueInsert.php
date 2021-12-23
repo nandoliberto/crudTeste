@@ -31,7 +31,6 @@ class ValiueInsert{
                         throw("Funçao ".__FUNCTION__.  " necessario pelo menos um parametro");
                     }
                 }
-                return "docExist";
             }
         }catch (\Exception $e) {
             throw("Erro: ".__FUNCTION__." ". $e->getMessage());

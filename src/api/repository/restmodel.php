@@ -69,42 +69,32 @@ class Restmodel extends UtilsRestModel{
     
     }
 
-    public function valRegister(){
-
+    public function valRegister($tabela, $where){
         $this->_verifyRegister = $this->verifyRegister->valRegister($tabela, $where);
+    }
 
+    public function set($param){
+        $this->_set = $this->set->_set($param);
     }
 
     public function insert($param){
-        
         $this->verifyString($param);
-        
         $this->_insert = $this->insert->_insert($param);
-        
     }
 
     public function colummInsert($param){
-        
         $this->verifyString($param);
-        
         $this->_columm = $this->columm->_colummInsert($param);
-        
     }
 
     public function valueInsert($param){
-        
         $this->verifyString($param);
-        
         $this->_value = $this->value->_valueInsert($param);
-        
     }
 
     public function delete($param){
-        
         $this->verifyString($param);
-        
         $this->_delete = $this->delete->cadDelete($param);
-        
     }
 
     public function from($param){
@@ -151,7 +141,7 @@ class Restmodel extends UtilsRestModel{
         $ret;
 
         if(isset($this->_verifyRegister)){
-            $ret = $this->db->execQuery($sql,"register");
+            $ret = $this->db->execQuery($this->_verifyRegister,"register");
         }
 
         if(isset($this->_select)){
@@ -180,11 +170,20 @@ class Restmodel extends UtilsRestModel{
         }
 
         if(isset($this->_update)){
+            if(!isset($this->_where)){
+                return "Por favor informar o Where para o update";
+            }
+
             $sql = $this->_update.$this->_set.$this->_where;
             $ret = $this->db->execQuery($sql, "update");
         }
 
         if(isset($this->_delete)){
+
+            if(!isset($this->_where)){
+                return "Por favor informar o Where para o delete";
+            }
+
             $sql = $this->_delete.$this->_where;
             $ret = $this->db->execQuery($sql, "delete");
         }

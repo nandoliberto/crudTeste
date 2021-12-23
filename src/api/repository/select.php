@@ -9,7 +9,7 @@ class Select {
             return "SELECT ".$param." FROM ";
             
         }catch(\Exception $e){
-            throw("Erro :".__FUNCTION__." ". $e->getMessage());
+           throw(json_encode("Erro :".__FUNCTION__." ". $e->getMessage()));
         }
     }
 }

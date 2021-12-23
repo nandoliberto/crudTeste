@@ -10,7 +10,7 @@ class Inner{
                     return " INNER JOIN ".$key." ON ".$value;
                 }
             }else if(count($param) > 1){
-                $arr="";
+                $arr;
                 foreach ($param as $key => $value){
 
                     $arr .= " INNER JOIN ".$key." ON ".$value;
@@ -20,7 +20,7 @@ class Inner{
                 throw("Funçao ".__FUNCTION__.  " necessario pelo menos um parametro para o inner");
             }
         } catch (\Exception $e) {
-            throw("Erro :".__FUNCTION__." ". $e->getMessage());
+           throw(json_encode("Erro :".__FUNCTION__." ". $e->getMessage()));
         }
     }
 }

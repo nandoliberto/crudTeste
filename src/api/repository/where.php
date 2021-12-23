@@ -6,13 +6,13 @@ class Where{
         try {
             
             if(count($param) == 1){
-                
+      
                 foreach ($param as $key => $value) {
                     return " WHERE ".$key."='".$value."'";
+                    $i++;
                 }
-
             }else if(count($param) > 1){
-                $arr="";
+                $arr;
                 foreach ($param as $key => $value) {
 
                     if(!isset($arr)){
@@ -25,7 +25,7 @@ class Where{
                 throw("Funçao ".__FUNCTION__.  " necessario pelo menos um parametro para o where");
             }
         } catch (\Exception $e) {
-            throw("Erro :".__FUNCTION__." ". $e->getMessage());
+           throw(json_encode("Erro :".__FUNCTION__." ". $e->getMessage()));
         }
     }
 }

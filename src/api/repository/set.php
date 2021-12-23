@@ -3,33 +3,32 @@
 class Set{
     public function _set(array $param){
         try {
-            $param = strtoupper($param);
-            
+
             if(count($param) == 1){
                 
                 foreach ($param as $key => $value) {
                     
-                    return " SET ".$key."='".$value."'";
+                    return " SET ".$key."='".strtoupper($value)."'";
                 }
 
             }else if(count($param) > 1){
-                $arr="";
+                $arr;
                 foreach ($param as $key => $value) {
-
-                    if(!isset($this->set)){
-                        $$arr  = " SET ".$key."='".$value."'";
+                    
+                    if(!isset($arr)){
+                        $arr  = " SET ".$key."='".strtoupper($value)."'";
                     }else{
-                        $arr.= " AND ".$key."='".$value."'";
+                        $arr.= " ,".$key."='".strtoupper($value)."'";
                     }
                 }
-
+                
                 return $arr;
             }else{
                 
                 throw("Funçao ".__FUNCTION__.  " necessario pelo menos um parametro para o where");
             }
         } catch (\Exception $e) {
-            throw("Erro :".__FUNCTION__." ". $e->getMessage());
+           throw(json_encode("Erro :".__FUNCTION__." ". $e->getMessage()));
         }
     }
 }

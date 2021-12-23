@@ -11,7 +11,7 @@ class From{
                 throw("Funçao ".__FUNCTION__.  "necessita de um parametro em formato de string");
             }
         } catch (\Exception $e) {
-            throw("Erro :".__FUNCTION__." ". $e->getMessage());
+           throw(json_encode("Erro :".__FUNCTION__." ". $e->getMessage()));
         }
     }
 }
