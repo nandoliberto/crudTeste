@@ -14,7 +14,7 @@ ENV APACHE_RUN_GROUP www-data
 
 WORKDIR /var/www/html
 
-RUN docker-php-ext-install mysqli pdo_mysql
+RUN docker-php-ext-install mysqli
 RUN a2enmod rewrite
 
 EXPOSE 80
