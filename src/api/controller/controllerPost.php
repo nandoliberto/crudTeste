@@ -16,6 +16,12 @@ class ControllerPost extends CadastroModel{
         
         $ret = $this->insertCad($param);
         
-        return $ret;
+        if(!$ret){
+            return "Erro ao gravar dados.";
+        }elseif($ret == "docExist"){
+            return "Documento ja gravado anteriormente";
+        }
+
+        return  "Dados gravados com sucesso!";
     }
 }
