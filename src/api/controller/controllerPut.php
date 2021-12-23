@@ -27,11 +27,17 @@ class ControllerPut extends CadastroModelPut{
                 $ret = $this->atzDadosModel($arr);
                 
                 if($ret){
-                    return "registro atualizado com sucesso.";
+                    http_response_code(202);
+                    $arr = array("Message: "=>"registro atualizado com sucesso.");
+                    return $arr;
                 }
-                return "Erro ao atualizar registro";
+                http_response_code(500);
+                $arr = array("Message: "=>"Erro ao atualizar registro.");
+                return $arr;
             }
-            return "Registro inexistente";
+            http_response_code(404);
+            $arr = array("Message: "=>"Registro inexistente.");
+            return $arr;
 
         } catch (\Exception $e) {
            throw(json_encode("Erro :".__FUNCTION__." ". $e->getMessage()));
