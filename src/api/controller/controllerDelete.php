@@ -9,9 +9,13 @@ class ControllerDelete extends CadastroDeleteModel{
             $ret = $this->delCadastroModel($id);
 
             if($ret == 1){
-                return "Registro com excluido com sucesso!";
+                http_response_code(200);
+                $arr = array("Message: "=>"Registro com excluido com sucesso!");
+                return $arr;
             }
-            return "Erro ao excluir registro.";
+            http_response_code(500);
+            $arr = array("Message: "=>"Erro ao excluir registro.");
+            return $arr;
         } catch (\Exception $e) {
            throw(json_encode("Erro :".__FUNCTION__." ". $e->getMessage()));
         }
