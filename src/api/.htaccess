@@ -1,0 +1,11 @@
+RewriteEngine On
+
+RewriteBase /api/
+
+RewriteCond %{REQUEST_URI} !-f
+
+RewriteCond %{REQUEST_URI} !-d
+
+RewriteCond %{REQUEST_URI} !-l
+
+RewriteRule ^(.*)$ handler/index.php?url=$1 [QSA,L]
