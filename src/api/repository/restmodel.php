@@ -1,7 +1,7 @@
 <?php
 
 include_once("../utils/UtilsRestModel.php");
-require_once("../database/database.php");
+require_once("../database/queryExec.php");
 require_once("colummInsert.php");
 require_once("del.php");
 require_once("from.php");
@@ -15,6 +15,7 @@ require_once("set.php");
 require_once("update.php");
 require_once("valueInsert.php");
 require_once("where.php");
+require_once("verifyRegister.php");
 
 class Restmodel extends UtilsRestModel{
 
@@ -44,7 +45,9 @@ class Restmodel extends UtilsRestModel{
     private $_columm;
     private $value;
     private $_value;
-    public $db;
+    private $db;
+    private $verifyRegister;
+    private $_verifyRegister;
 
     public function __construct(){
 
@@ -61,7 +64,15 @@ class Restmodel extends UtilsRestModel{
         $this->from = new From();
         $this->select = new Select();
         $this->delete = new cadDel();
-        
+        $this->db = new QueryExec();
+        $this->verifyRegister = new VerifyRegister();
+    
+    }
+
+    public function valRegister(){
+
+        $this->_verifyRegister = $this->verifyRegister->valRegister($tabela, $where);
+
     }
 
     public function insert($param){
@@ -136,9 +147,13 @@ class Restmodel extends UtilsRestModel{
 
     public function exec(){
 
-        $this->db = new Database();
         $sql="";
         $ret;
+
+        if(isset($this->_verifyRegister)){
+            $ret = $this->db->execQuery($sql,"register");
+        }
+
         if(isset($this->_select)){
 
             $sql = $this->_select.$this->_from;
@@ -177,7 +192,6 @@ class Restmodel extends UtilsRestModel{
         if(isset($this->_insert)){
             $sql = $this->_insert.$this->_columm.$this->_value;
             $ret = $this->db->execQuery($sql,"insert");
-            
         }
         
         return $ret;

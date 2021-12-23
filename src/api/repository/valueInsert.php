@@ -12,23 +12,26 @@ class ValiueInsert{
             }else{
 
                 $xpl = explode(",", $param);
+                
+                if(!$ret || $ret = ""){
+                    $arr;
 
-                $arr;
-
-                if(count($xpl) > 0){
-                    for ($i=0; $i < count($xpl); $i++) { 
-
-                        if(!isset($arr)){
-                            $arr = "'".$xpl[$i]."'";
-                        }else{
-                            $arr .= ",'".$xpl[$i]."'";
-                        }
-                    }
+                    if(count($xpl) > 0){
+                        for ($i=0; $i < count($xpl); $i++) { 
     
-                    return $arr .= ");";
-                }else{
-                    throw("Funçao ".__FUNCTION__.  " necessario pelo menos um parametro");
+                            if(!isset($arr)){
+                                $arr = "'".$xpl[$i]."'";
+                            }else{
+                                $arr .= ",'".$xpl[$i]."'";
+                            }
+                        }
+                        
+                        return $arr .= ");";
+                    }else{
+                        throw("Funçao ".__FUNCTION__.  " necessario pelo menos um parametro");
+                    }
                 }
+                return "docExist";
             }
         }catch (\Exception $e) {
             throw("Erro: ".__FUNCTION__." ". $e->getMessage());

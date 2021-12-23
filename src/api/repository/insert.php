@@ -3,7 +3,7 @@
 class Insert{
     public function _insert($param){
         try {
-
+            
             return "INSERT INTO ".$param." (";
 
         } catch (\Exception $e) {

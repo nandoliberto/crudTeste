@@ -3,7 +3,7 @@
 class ColummInsert {
     public function _colummInsert($param){
         try{
-
+            
             if(!strpos($param, ",")){
 
                 return $param.") values (";
@@ -15,7 +15,7 @@ class ColummInsert {
                 $arr;
                 
                 if(count($xpl) > 0){
-
+                    
                     for ($i=0; $i < count($xpl); $i++) { 
                     
                         if(!isset($arr)){
