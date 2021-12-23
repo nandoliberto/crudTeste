@@ -16,4 +16,11 @@ class CadastroModel extends Restmodel{
 
     }
 
+    public function verifyRegisterModel($dados){
+
+        $this->valRegister("product", array("prd_sku"=>$dados->sku, "prd_name"=>$dados->productName, "prd_category"=>$dados->category));
+        $ret = $this->exec();
+        
+        return $ret;
+    }
 }
