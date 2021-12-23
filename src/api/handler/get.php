@@ -1,17 +1,15 @@
 <?php
 
 require_once("../controller/controllerGet.php");
-;
-class Get{
+
+class Get extends ControllerGet{
 
     public function getCadastro($param){
-
-        $get = new ControllerGet();
-
-        if(isset($param[1])){
-            return $get->getId($param[1]);
+        
+        if(isset($param[0])){
+            return $this->getId($param[0]);
         }
 
-        return $get->getAll();
+        return $this->getAll();
     }
 }

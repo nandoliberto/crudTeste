@@ -2,13 +2,10 @@
 
 require_once("../controller/controllerPost.php");
 
-class Post{
+class Post extends ControllerPost{
 
     public function postCadastro($obj){
-        
-        $post = new ControllerPost();
 
-        return $post->gravaDados($obj);
+        return $this->gravaDados($obj);
     }
-
 }

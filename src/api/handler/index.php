@@ -5,6 +5,7 @@ include_once("../utils/UtilsAuth.php");
 require_once("post.php");
 require_once("get.php");
 require_once("delete.php");
+require_once("put.php");
 
 header("Access-Control-Allow-Origin:*");
 header('Cache-Control: no-cache,must-revalidate');
@@ -18,6 +19,7 @@ class CadastroHandler{
     private $metodo;
     private $post;
     private $get;
+    private $put;
 
     public function __construct($metodo,$obj){
         
@@ -27,6 +29,7 @@ class CadastroHandler{
         $this->post = new Post();
         $this->get = new Get();
         $this->delete = new Delete();
+        $this->put = new Put();
 
     }
 
@@ -44,7 +47,7 @@ class CadastroHandler{
                 return $this->post->postCadastro($this->obj);
 
             case "PUT":
-                return $this->post->postCadastro($this->obj);
+                return $this->put->putCadastro($this->obj);
 
             case "GET":
                 $param = $this->utils->getQueryParams($_GET);
