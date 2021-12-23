@@ -9,25 +9,25 @@ services:
           - DATABASE_HOST=db
           - DATABASE_PORT=3306
           - DATABASE_DB=db
-          - DATABASE_USER=
-          - DATABASE_PASS=
+          - DATABASE_USER=root
+          - DATABASE_PASS=root
           - DATABASE_CHARSET=utf-8
         tty: true
         networks:
           - desafio-network
         ports:
           - 8080:80
-        
     db:
         image: mariadb
-        command: --innodb-use-native-aio=0
+        command: --init-file /data/application/init.sql
         container_name: db
         restart: always
         tty: true
         ports: 
-            - 3307:3306
+            - "3307:3306"
         volumes:
             - ./src/DB:/var/lib/mysql
+            - ./sql/init.sql:/data/application/init.sql
         environment:
             - MYSQL_DATABASE=db
             - MYSQL_ROOT_PASSWORD=root 
