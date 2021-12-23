@@ -32,7 +32,7 @@ class CadastroHandler{
 
     
     public function change(){
-
+        
         $header = $this->utils->valHeaders(getallheaders());
 
         if($header){
@@ -41,6 +41,9 @@ class CadastroHandler{
         
         switch ($this->metodo) {
             case "POST":
+                return $this->post->postCadastro($this->obj);
+
+            case "PUT":
                 return $this->post->postCadastro($this->obj);
 
             case "GET":
