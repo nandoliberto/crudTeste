@@ -20,11 +20,17 @@ class ControllerPost extends CadastroModel{
                 $ret = $this->insertCad($param);
 
                 if(!$ret){
-                    return "Erro ao gravar dados.";
+                    http_response_code(500);
+                    $arr = array("Message: "=>"Erro ao gravar dados.");
+                    return $arr;
                 }
-                return  "Dados gravados com sucesso, id: ".$ret;
+                http_response_code(201);
+                $arr = array("Message: "=>"Dados gravados com sucesso, id: ".$ret);
+                return  $arr;
             }
-            return "Documento ja gravado anteriormente";
+            http_response_code(200);
+            $arr = array("Message: "=>"Documento ja gravado anteriormente.");
+            return $arr;
         } catch (\Exception $e) {
            throw(json_encode("Erro :".__FUNCTION__." ". $e->getMessage()));
         }
