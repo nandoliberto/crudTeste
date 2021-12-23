@@ -1,21 +1,19 @@
 <?php
 
-class VerifyRegisterexec{
+require_once("/var/www/html/api/database/database.php");
 
-    // private $restModel;
+class VerifyRegisterDatabase extends Database{
 
-    // public function __construct(){
-    //     $this->restModel = new RestModel();
-    // }
+    public function registerExec($query){
+        try {
+            
+            $exe = mysqli_query($this->mysql, $query);
 
-    // public function vRegister(){
-
-    //     $this->restModel->select("prd_id");
-    //     $this->restModel->from("product");
-    //     $this->restModel->where(array("prd_sku"=>$sku, "prd_name"=>$name, "prd_category"=>$categ));
-    //     $ret = $this->restModel->exec();
-
-    //     return $ret;
-    // }
-
+            $ret = mysqli_num_rows($exe);
+            
+            return $ret;
+        } catch (\Exception $e) {
+           throw(json_encode("Erro :".__FUNCTION__." ". $e->getMessage()));
+        }
+    }
 }

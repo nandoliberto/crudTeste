@@ -8,10 +8,13 @@ class InsertDatabase extends Database{
         
         try {
             $exe = mysqli_query($this->mysql, $query);
-
-            return $exe;
+            if($exe){
+                $exe2 = $this->mysql->insert_id;
+                return $exe2;
+            }
+            return $ret;
         } catch (\Exception $e) {
-            throw("Erro :".__FUNCTION__." ". $e->getMessage());
+           throw(json_encode("Erro :".__FUNCTION__." ". $e->getMessage()));
         }
     }
 }
