@@ -12,9 +12,14 @@ class ValDataPost {
             $ret["status"] = false;
             $i++;
         }
-        if(!preg_match('/[0-9]/',$dados->sku) && !preg_match('/[a-zA-Z]/',$dados->sku)){
-            $ret["retorno"][$i]["Erro"] = "O codigo deve conter letras e numeros";
-            $ret["status"] = false;
+        
+        if(!preg_match("/[A-Za-z]/", $dados->sku)){
+            $ret["retorno"][$i]["Erro"] = "O campo SKU deve conter letras e numeros";
+            $i++;
+        }
+
+        if(!preg_match("/[0-9]/", $dados->sku)){
+            $ret["retorno"][$i]["Erro"] = "O campo SKU deve conter letras e numeros";
             $i++;
         }
 
@@ -24,8 +29,8 @@ class ValDataPost {
             $i++;
         }
 
-        if(!isset($dados->price)){
-            $ret["retorno"][$i]["Erro"] = "O campo preco e obrigatorio";
+        if(!isset($dados->price) && !is_float($dados->price)){
+            $ret["retorno"][$i]["Erro"] = "O campo preco e obrigatorio e deveser um float";
             $ret["status"] = false;
             $i++;
         }
@@ -42,8 +47,8 @@ class ValDataPost {
             $i++;
         }
 
-        if($dados->categoria == "Category 1" && $dados->categoria == "Category 2" &&
-        $dados->categoria == "Category 3" && $dados->categoria == "Category 4"){
+        if($dados->category != "Category 1" && $dados->category != "Category 2" &&
+        $dados->category != "Category 3" && $dados->category != "Category 4"){
             $ret["retorno"][$i]["Erro"] = "O campo categoria deve ser 1, 2, 3 ou 4";
             $ret["status"] = false;
             $i++;
