@@ -19,5 +19,4 @@ class UtilsRestModel{
         }
         return false;
     }
-
 }
