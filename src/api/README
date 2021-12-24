@@ -1,0 +1,30 @@
+POST = enviar um json conforme exemplo
+{
+	"sku":"1qw",
+	"productName": "nam594",
+	"category":"Category",
+	"descricao":"desc",
+	"price": "sdf",
+	"qtd": "123"
+}
+
+PUT = enviar um json conforme exemplo
+    - obrigatorio informar id e os outros campos podem existir ou nao
+{
+	"id": "2",
+	"sku":"1",
+	"productName": "nam594",
+	"category":"Category",
+	"descricao":"desc",
+	"price": "sdf",
+	"qtd": "123"
+}
+
+DELETE = informar o id do produto que deseja excluir na url conforme exemplo
+http://localhost:8080/api/produtos/{id}
+
+GET = para trazer todos os produtos cadastrados chamar a seguinte url
+http://localhost:8080/api/produtos/
+
+GET = informar o id do produto que visualizar
+http://localhost:8080/api/produtos/{id}
