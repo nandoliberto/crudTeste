@@ -54,8 +54,8 @@ class CadastroHandler{
                 return $this->get->getCadastro($param);
 
             case 'DELETE':
-                $param = $this->utils->getQueryParams(substr($_GET["url"], 0, -1), $_GET);
-                return $this->delete->deleteCadastro($param[1]);
+                $param = $this->utils->getQueryParams($_GET);
+                return $this->delete->deleteCadastro($param[0], $param[1]);
 
             default:
                 return "metodo invalido";

@@ -1,6 +1,6 @@
 <?php
 
-require_once("../controller/controllerGet.php");
+require_once(dirname(__DIR__)."/controller/controllerGet.php");
 
 class Get extends ControllerGet{
 

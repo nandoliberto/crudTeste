@@ -1,6 +1,6 @@
 <?php
 
-require_once("../controller/controllerPost.php");
+require_once(dirname(__DIR__)."/controller/controllerPost.php");
 
 class Post extends ControllerPost{
 

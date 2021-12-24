@@ -1,6 +1,6 @@
 <?php
 
-require_once("../controller/controllerPut.php");
+require_once(dirname(__DIR__)."/controller/controllerPut.php");
 
 class Put extends ControllerPut{
 
