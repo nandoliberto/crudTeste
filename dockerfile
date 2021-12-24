@@ -15,6 +15,9 @@ ENV APACHE_RUN_GROUP www-data
 RUN mkdir /var/www/html/api/DB
 RUN chown -R www-data /var/www/html/api/DB
 
+RUN mkdir /var/www/html/Logs
+RUN chown -R www-data /var/www/html/Logs
+
 WORKDIR /var/www/html
 
 RUN docker-php-ext-install mysqli
