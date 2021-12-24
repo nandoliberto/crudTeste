@@ -1,8 +1,18 @@
 <?php
 
+require_once("/var/www/html/api/utils/logs.php");
+
 class ValDataPut {
 
+    private $logs;
+
+    public function __construct(){
+        $this->logs = new Logs();
+    }
+
     public function verifyData($dados){
+
+        $this->logs->writeLog("[".date("Y-m-d H:i:s")."] "."Validando campos");
         
         $i = 0;
 
@@ -63,6 +73,11 @@ class ValDataPut {
         }
 
         if($ret["retorno"]){
+
+            for ($i=0; $i < count($ret["retorno"]); $i++) { 
+                $this->logs->writeLog("[".date("Y-m-d H:i:s")."] "."Erro localizado = ".json_encode($ret["retorno"][$i]));
+            }
+
             return $ret["retorno"];
         }
     }

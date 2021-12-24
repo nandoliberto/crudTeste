@@ -1,8 +1,18 @@
 <?php
 
+require_once("/var/www/html/api/utils/logs.php");
+
 class ConstructArrayPut{
 
+    private $logs;
+
+    public function __construct(){
+        $this->logs = new Logs();
+    }
+
     public function constructArray(object $arrObjData, array $arrSkipIndices = array()){
+
+        $logs->writeLog("[".date("Y-m-d H:i:s")."] "."Convertendo obj da requisicao de obj para array");
 
         $arrData = array();
         if (is_object($arrObjData)) {
@@ -10,7 +20,7 @@ class ConstructArrayPut{
         }
         if (is_array($arrObjData)) {
             foreach ($arrObjData as $index => $value) {
-                if (is_object($value) || is_array($value)) {
+                if (is_object($value) or is_array($value)) {
                     $value = $this->objectsIntoArray($value, $arrSkipIndices);
                 }
                 if (in_array($index, $arrSkipIndices)) {
@@ -23,6 +33,8 @@ class ConstructArrayPut{
     }
 
     private function makeDados($arrayDados){
+
+        $logs->writeLog("[".date("Y-m-d H:i:s")."] "."Montando array para insert");
 
         $arr = array();
 
