@@ -1,7 +1,7 @@
 <?php
 
-include_once("../utils/UtilsRestModel.php");
-require_once("../database/queryExec.php");
+include_once(dirname(__DIR__)."/utils/UtilsRestModel.php");
+require_once(dirname(__DIR__)."/database/queryExec.php");
 require_once("colummInsert.php");
 require_once("del.php");
 require_once("from.php");
