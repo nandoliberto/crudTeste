@@ -1,6 +1,6 @@
 <?php
 
-require_once("../model/cadastroModelGet.php");
+require_once(dirname(__DIR__)."/model/cadastroModelGet.php");
 
 class ControllerGet extends CadastroModelGet{
 

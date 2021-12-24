@@ -1,5 +1,5 @@
 <?php
-include_once("../model/cadastroModelPost.php");
+include_once(dirname(__DIR__)."/model/cadastroModelPost.php");
 require_once("valDataPost/valDataPost.php");
 
 class ControllerPost extends CadastroModel{

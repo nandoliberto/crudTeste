@@ -1,6 +1,6 @@
 <?php
 
-require_once("../model/cadastroModelPut.php");
+require_once(dirname(__DIR__)."/model/cadastroModelPut.php");
 require_once("valDataPut/valDataPut.php");
 require_once("valDataPut/constructArrayPut.php");
 
