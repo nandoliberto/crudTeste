@@ -1,6 +1,8 @@
 FROM php:7.4-apache
 
 COPY ./src /var/www/html
+RUN chown -R www-data /var/www/html
+
 COPY ./conf/apache2.conf /etc/apache2
 COPY ./conf/000-default.conf /etc/apache2/sites-available
 
@@ -14,9 +16,6 @@ ENV APACHE_RUN_GROUP www-data
 
 RUN mkdir /var/www/html/api/DB
 RUN chown -R www-data /var/www/html/api/DB
-
-RUN mkdir /var/www/html/Logs
-RUN chown -R www-data /var/www/html/Logs
 
 WORKDIR /var/www/html
 
