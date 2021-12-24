@@ -9,7 +9,7 @@ class Logs{
                 mkdir("/var/www/html/Logs/");
             }
 
-            file_put_contents("/var/www/html/Logs/Logs.txt", $msg.";".PHP_EOL, FILE_APPEND);
+            file_put_contents("/var/www/html/Logs/Logs_".date("Y_m_d")."_.txt", $msg.";".PHP_EOL, FILE_APPEND);
         } catch (\Exeception $e) {
             throw(json_encode("Erro :".__FUNCTION__." ". $e->getMessage()));
         }

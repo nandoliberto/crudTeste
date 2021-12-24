@@ -10,11 +10,11 @@ class UtilsRestModel{
 
     public function verifyString($param){
 
-        if(strpos($param, "SELECT") || strpos($param, "FROM") 
-        || strpos($param, "JOIN") || strpos($param, "WHERE")
-        || strpos($param, "DELETE") || strpos($param, "UPDATE")
-        || strpos($param, "ORDER") || strpos($param, "GROUP")
-        || strpos($param, "BY")){
+        if(strpos($param, "SELECT") or strpos($param, "FROM") 
+        or strpos($param, "JOIN") or strpos($param, "WHERE")
+        or strpos($param, "DELETE") or strpos($param, "UPDATE")
+        or strpos($param, "ORDER") or strpos($param, "GROUP")
+        or strpos($param, "BY")){
             return true;
         }
         return false;
