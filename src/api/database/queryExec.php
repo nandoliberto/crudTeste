@@ -1,11 +1,11 @@
 <?php
 
 
-require_once("/var/www/html/api/database/exec/execSelect.php");
-require_once("/var/www/html/api/database/exec/execInsert.php");
-require_once("/var/www/html/api/database/exec/execDelete.php");
-require_once("/var/www/html/api/database/exec/execUpdate.php");
-require_once("/var/www/html/api/database/exec/execverifyRegister.php");
+require_once(dirname(__DIR__)."/database/exec/execSelect.php");
+require_once(dirname(__DIR__)."/database/exec/execInsert.php");
+require_once(dirname(__DIR__)."/database/exec/execDelete.php");
+require_once(dirname(__DIR__)."/database/exec/execUpdate.php");
+require_once(dirname(__DIR__)."/database/exec/execverifyRegister.php");
 
 class QueryExec extends Database{
 
