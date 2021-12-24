@@ -1,15 +1,14 @@
 <?php
 
-include_once(dirname(__DIR__)."/repository/restmodel.php");
+require_once(dirname(__DIR__)."/repository/restmodel.php");
 
-class CadastroDeleteModel {
+class CadastroDeleteModel extends RestModel{
 
     public function delCadastroModel($param){
-        $del = new RestModel();
         
-        $del->delete("product");
-        $del->where(array("prd_id"=>$param));
-        return $del->exec();
+        $this->delete("product");
+        $this->where(array("prd_id"=>$param));
+        return $this->exec();
 
     }
 }
