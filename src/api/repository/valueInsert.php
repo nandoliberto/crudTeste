@@ -13,7 +13,7 @@ class ValiueInsert{
 
                 $xpl = explode(",", $param);
                 
-                if(!$ret || $ret = ""){
+                if(!$ret or $ret = ""){
                     $arr;
 
                     if(count($xpl) > 0){
