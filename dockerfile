@@ -12,6 +12,9 @@ ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 
+RUN mkdir /var/www/html/api/DB
+RUN chown -R www-data /var/www/html/api/DB
+
 WORKDIR /var/www/html
 
 RUN docker-php-ext-install mysqli
