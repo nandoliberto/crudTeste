@@ -7,6 +7,7 @@ class InsertDatabase extends Database{
     public function insertExec($query){
         
         try {
+            $this->log("[".date("Y-m-d H:i:s")."] "."Executando query -> ".$query);
             $exe = mysqli_query($this->mysql, $query);
             if($exe){
                 $exe2 = $this->mysql->insert_id;
@@ -14,7 +15,8 @@ class InsertDatabase extends Database{
             }
             return $ret;
         } catch (\Exception $e) {
-           throw(json_encode("Erro :".__FUNCTION__." ". $e->getMessage()));
+            $this->log("[".date("Y-m-d H:i:s")."] ". __FUNCTION__." ".$e->getMessage());
+            throw(json_encode("Erro :".__FUNCTION__." ". $e->getMessage()));
         }
     }
 }
