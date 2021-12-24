@@ -1,7 +1,8 @@
 <?php
 
-include_once("../controller/controllerPost.php");
-include_once("../utils/UtilsAuth.php");
+require_once(dirname(__DIR__)."/controller/controllerPost.php");
+require_once(dirname(__DIR__)."/utils/UtilsAuth.php");
+require_once(dirname(__DIR__)."/utils/logs.php");
 require_once("post.php");
 require_once("get.php");
 require_once("delete.php");
@@ -20,6 +21,7 @@ class CadastroHandler{
     private $post;
     private $get;
     private $put;
+    private $log;
 
     public function __construct($metodo,$obj){
         
@@ -30,6 +32,7 @@ class CadastroHandler{
         $this->get = new Get();
         $this->delete = new Delete();
         $this->put = new Put();
+        $this->log = new Logs();
 
     }
 
@@ -44,6 +47,7 @@ class CadastroHandler{
         
         switch ($this->metodo) {
             case "POST":
+                $this->log->writeLog("[".date("Y-m-d H:i:s")."] "."Requisicao POST");
                 return $this->post->postCadastro(substr($_GET["url"], 0, -1), $this->obj);
 
             case "PUT":
