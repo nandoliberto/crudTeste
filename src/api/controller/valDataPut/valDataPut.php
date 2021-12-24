@@ -37,15 +37,10 @@ class ValDataPut {
             $ret["retorno"][$i]["Erro"] = "O campo preco e obrigatorio e deve ser um float";
             $i++;
         }
-
-        if(isset($dados->qtd)){
-            $ret["retorno"][$i]["Erro"] = "O campo quantidade e obrigatorio";
+        
+        if(isset($dados->qtd) && !is_numeric($dados->qtd)){
+            $ret["retorno"][$i]["Erro"] = "O campo quantidade e obrigatorio e deve ser numerico";
             $i++;
-
-            if(is_numeric($dados->qtd)){
-                $ret["retorno"][$i]["Erro"] = "O campo quantidade deve conter apenas numeros";
-                $i++;
-            }
         }
         
         if(isset($dados->category)){
