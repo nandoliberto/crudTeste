@@ -44,10 +44,9 @@ class CadastroHandler{
         if($header){
             return $header;
         }
-        
+        $this->log->writeLog("[".date("Y-m-d H:i:s")."] "."Iniciando");
         switch ($this->metodo) {
             case "POST":
-                $this->log->writeLog("[".date("Y-m-d H:i:s")."] "."Requisicao POST");
                 return $this->post->postCadastro(substr($_GET["url"], 0, -1), $this->obj);
 
             case "PUT":
@@ -62,8 +61,8 @@ class CadastroHandler{
                 return $this->delete->deleteCadastro($param[0], $param[1]);
 
             default:
+                $this->log->writeLog("[".date("Y-m-d H:i:s")."] "."Requisicao INVALIDA");
                 return "metodo invalido";
-
         }
     }
 }
