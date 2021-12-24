@@ -1,5 +1,7 @@
 <?php
 
+require_once(dirname(__DIR__)."/utils/logs.php");
+
 class Database{
 
     public function __construct(){
@@ -40,12 +42,14 @@ class Database{
                     "pass" => $env["DATABASE_PASS"],
                     "charset" => $env["DATABASE_CHARSET"]
                 ),
-                "PATH" => array(
-                    "log" => $env["PATH_LOG"],
-                ),
             );
 
             return $ret;
         }
+    }
+
+    public function log($msg){
+        $log = new Logs();
+        $log->writeLog($msg);
     }
 }
