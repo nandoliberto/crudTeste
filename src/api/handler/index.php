@@ -44,17 +44,17 @@ class CadastroHandler{
         
         switch ($this->metodo) {
             case "POST":
-                return $this->post->postCadastro($this->obj);
+                return $this->post->postCadastro(substr($_GET["url"], 0, -1), $this->obj);
 
             case "PUT":
-                return $this->put->putCadastro($this->obj);
+                return $this->put->putCadastro(substr($_GET["url"], 0, -1), $this->obj);
 
             case "GET":
                 $param = $this->utils->getQueryParams($_GET);
                 return $this->get->getCadastro($param);
 
             case 'DELETE':
-                $param = $this->utils->getQueryParams($_GET);
+                $param = $this->utils->getQueryParams(substr($_GET["url"], 0, -1), $_GET);
                 return $this->delete->deleteCadastro($param[1]);
 
             default:

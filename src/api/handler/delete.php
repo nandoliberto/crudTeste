@@ -6,7 +6,11 @@ class Delete extends ControllerDelete{
 
     public function deleteCadastro($param){
 
-        return $this->delCadatro($param);
-
+        if($param == "produtos"){
+            return $this->delCadatro($param);
+        }
+        
+        http_response_code(404);
+        return array("Message: "=> "Rota nao localizada, usar /produtos");
     }
 }

@@ -4,8 +4,12 @@ require_once("../controller/controllerPost.php");
 
 class Post extends ControllerPost{
 
-    public function postCadastro($obj){
+    public function postCadastro($param, $obj){
 
-        return $this->gravaDados($obj);
+        if($param == "produtos"){
+            return $this->gravaDados($obj);
+        }
+        http_response_code(404);
+        return array("Message: "=> "Rota nao localizada, usar /produtos");
     }
 }
