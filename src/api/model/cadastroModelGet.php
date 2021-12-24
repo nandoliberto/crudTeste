@@ -1,6 +1,6 @@
 <?php
 
-include_once("../repository/restmodel.php");
+include_once(dirname(__DIR__)."/repository/restmodel.php");
 
 class CadastroModelGet extends Restmodel{
 
